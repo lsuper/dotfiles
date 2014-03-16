@@ -1,6 +1,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+
 #osx color terminal
 export CLICOLOR=1
 # don't put duplicate lines in the history. See bash(1) for more options
@@ -140,9 +142,6 @@ fi
 
 #alias vim="emacs"
 
-PYTHONSTARTUP=~/.pythonrc.py
-export PYTHONSTARTUP
-
 parse_git_branch ()
 {
   git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#(git::\1)#'
@@ -156,6 +155,7 @@ parse_svn_url() {
 parse_svn_repository_root() {
   svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
 }
+
 set -o vi
 export EDITOR="vim"
 export GIT_EDITOR="vim"
@@ -181,6 +181,9 @@ _complete_hosts () {
     COMPREPLY=( $(compgen -W "${host_list}" -- $cur))
     return 0
 }
+
+export LESS="-X"
+alias clean_pycs='find . -name "*.pyc" -exec rm {} \;'
 
 complete -F _complete_hosts ssh
 complete -F _complete_hosts host
