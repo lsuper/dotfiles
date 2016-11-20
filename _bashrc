@@ -1,3 +1,5 @@
+#replace bash command with gun coreutils
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -188,4 +190,6 @@ alias clean_pycs='find . -name "*.pyc" -exec rm {} \;'
 complete -F _complete_hosts ssh
 complete -F _complete_hosts host
 
-export PATH=/home/lsuper/Projects/adt-bundle-linux-x86_64-20131030/sdk/platform-tools:$PATH
+export PATH=/home/lsuper/Softwares/Tools/adt-bundle-linux-x86_64-20131030/sdk/platform-tools:$PATH
+export MTURK_CMD_HOME=/Users/lsuper/Softwares/Tools/aws-mturk-clt-1.3.1
+export JAVA_HOME=/usr
